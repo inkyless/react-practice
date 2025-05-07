@@ -1,35 +1,26 @@
-function Drink({ name }) {
-  let part, caffeine, age;
-  if (name === "Tea"){
-    part = "leaf";
-    caffeine = "15-70 mg/cup";
-    age = "4,000+ years";
-  } else if (name === "Coffee"){
-    part = "bean";
-    caffeine = "80-185 mg/cup";
-    age = "1,000+ years";
-  };
-  return (
-    <section>
-      <h1>{name}</h1>
-      <dl>
-          <dt>Part of plant</dt>
-          <dd>{part}</dd>
-          <dt>Caffeine content</dt>
-          <dd>{caffeine}</dd>
-          <dt>Age</dt>
-          <dd>{age}</dd>
-      </dl>
+const poem = {
+  lines: [
+    'I write, erase, rewrite',
+    'Erase again, and then',
+    'A poppy blooms.'
+  ]
+};
 
-    </section>
-  );
-}
 
-export default function DrinkList() {
+export default function Poem() {
+  let output = [];
+  poem.lines.forEach((line,index)=>{
+    output.push(
+      <hr key={index+'-seperator'}/>
+    );
+    output.push(
+      <p key={index+'-text'}>{line}</p>
+    );
+  });
+  output.shift();
   return (
-    <div>
-      <Drink name="Tea" />
-      <Drink name="Coffee" />
-    </div>
+    <article>
+      {output}
+    </article>
   );
 }
